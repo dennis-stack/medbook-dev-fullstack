@@ -1,0 +1,29 @@
+<form (ngSubmit)="onSubmit()" #patientForm="ngForm">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" id="name" required [(ngModel)]="patient.name" name="name">
+  </div>
+  <div>
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob" required [(ngModel)]="patient.date_of_birth" name="date_of_birth">
+  </div>
+  <div>
+    <label for="gender">Gender</label>
+    <select id="gender" required [(ngModel)]="patient.gender_id" name="gender">
+      <option [ngValue]="null" disabled>Select Gender</option>
+      <option *ngFor="let gender of genders" [value]="gender.id">{{ gender.name }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="service">Type of Service</label>
+    <select id="service" required [(ngModel)]="selectedServiceId" name="service">
+      <option [ngValue]="null" disabled>Select Service</option>
+      <option *ngFor="let service of services" [value]="service.id">{{ service.name }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="comments">General Comments</label>
+    <textarea id="comments" required [(ngModel)]="comments" name="comments"></textarea>
+  </div>
+  <button type="submit">Submit</button>
+</form>
